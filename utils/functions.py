@@ -25,3 +25,21 @@ def get_dateinfo (dataset, list_datecol):
         dataset[col + '_MONTH'] = dataset[col].dt.month
 
     return dataset
+
+# funcion obener la yearweek
+def obtener_yearweek (df, date_column_name):
+  lista_num = []
+  lista_bool = []
+  lista_cat = []
+
+  for i in dataset:
+    if ((dataset[i].dtype.kind in('i','u','f'))) and i not in target and len(dataset[i].unique())!=2 :
+      lista_num.append(i)
+    elif ((dataset[i].dtype.kind in('i','u','f'))) and i not in target and len(dataset[i].unique())==2:
+      lista_bool.append(i)
+    elif ((dataset[i].dtype.kind=='b') ) and i not in target:
+      lista_bool.append(i)
+    elif ((dataset[i].dtype.kind=='O') ) and i not in target:
+      lista_cat.append(i)
+  return lista_num, lista_bool, lista_cat
+
