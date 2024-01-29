@@ -43,3 +43,15 @@ def obtener_yearweek (df, date_column_name):
       lista_cat.append(i)
   return lista_num, lista_bool, lista_cat
 
+
+from datetime import datetime, timedelta
+def calcular_yearweek(fecha):
+
+    # Convierte la fecha a un objeto de tipo datetime
+    dt = datetime.strptime(fecha, '%Y-%m-%d')
+    # Calcula el número de la semana del año
+    year, week, _ = dt.isocalendar()
+    result = ((year)*100)+week
+    return result
+
+
